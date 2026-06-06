@@ -42,11 +42,14 @@ export default defineConfig({
   ],
   use: {
     baseURL: resolveBaseURL(),
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    //screenshot: 'only-on-failure',
+    screenshot: 'on',
+    video: 'on',
+   // video: 'retain-on-failure',
     trace: 'on-first-retry',
     actionTimeout: 15_000,
     navigationTimeout: 30_000,
+    headless: false,
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },

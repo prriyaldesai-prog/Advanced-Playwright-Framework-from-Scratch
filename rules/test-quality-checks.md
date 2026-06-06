@@ -365,3 +365,111 @@ npm run clean  # Clean all generated files
 - Date: 2026-05-29
 - Version: 1.0.0
 - Maintainer: Advanced Playwright Framework Team
+
+
+### Report Contents
+- ✅ Test execution timeline
+- ✅ Pass/fail/skip statistics
+- ✅ Screenshots on failures
+- ✅ Video recordings
+- ✅ Trace files
+- ✅ Performance metrics
+
+---
+
+## 8. Logging Standards
+
+### Logger Usage
+```typescript
+import logger from '@utils/logger';
+
+logger.info('Test started');
+logger.warn('Potential issue detected');
+logger.error('Test failed');
+logger.debug('Debugging information');
+```
+
+### Log Files Location
+- Error logs: `logs/error.log`
+- Combined logs: `logs/combined.log`
+- Max file size: 5MB
+- Max files: 5
+
+### Log Level Configuration
+Set via `.env`:
+```env
+LOG_LEVEL=info
+```
+
+---
+
+## 9. Continuous Integration
+
+### GitHub Actions Workflow
+```yaml
+name: Test Quality Checks
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm install --legacy-peer-deps
+      - run: npm run lint
+      - run: npm run type-check
+      - run: npm run test:ci
+```
+
+---
+
+## 10. Code Review Checklist
+
+Before approving a PR, verify:
+- ✅ All linting rules passed
+- ✅ Code is properly formatted
+- ✅ TypeScript compilation successful
+- ✅ All tests pass
+- ✅ No hardcoded values (use .env)
+- ✅ Tests have proper tags (@p0, @p1, @e2e)
+- ✅ Descriptive test names and comments
+- ✅ No console.log (use logger)
+- ✅ Proper error handling
+- ✅ Performance acceptable
+
+---
+
+## Quick Start Commands
+
+```bash
+# Run all quality checks
+npm run lint && npm run format:check && npm run type-check && npm run test
+
+# Auto-fix issues
+npm run lint:fix && npm run format
+
+# Run specific test suites
+npm run test:e2e
+npm run test:p0
+npm run test:chromium
+
+# Generate reports
+npm run test:report
+npm run clean  # Clean all generated files
+```
+
+---
+
+## Enforcement
+
+- **Pre-commit**: Local checks using husky and lint-staged (optional)
+- **CI/CD**: Automated checks on every push
+- **Code Review**: Manual verification by team leads
+- **Standards**: Consistent framework for all contributors
+
+---
+
+## Last Updated
+- Date: 2026-05-29
+- Version: 1.0.0
+- Maintainer: Advanced Playwright Framework Team

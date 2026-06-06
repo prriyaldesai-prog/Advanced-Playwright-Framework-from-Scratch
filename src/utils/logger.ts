@@ -43,4 +43,10 @@ const logger = winston.createLogger({
   exitOnError: false,
 });
 
+export function createLogger(scope: string): Logger {
+  return logger.child({ scope });
+}
+
+export type Logger = winston.Logger;
+
 export default logger;
