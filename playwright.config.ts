@@ -50,7 +50,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     actionTimeout: 15_000,
     navigationTimeout: 30_000,
-    headless: false,
+    headless: true,
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
