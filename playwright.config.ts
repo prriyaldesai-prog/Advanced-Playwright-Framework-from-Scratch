@@ -39,6 +39,7 @@ export default defineConfig({
     ['json', { outputFile: 'test-results/results.json' }],
     ['allure-playwright', { outputFolder: 'allure-results' }],
     ['list'],
+    ['junit', { outputFile: 'test-results/junit.xml' }],
   ],
   use: {
     baseURL: resolveBaseURL(),
